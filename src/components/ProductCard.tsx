@@ -3,23 +3,70 @@ import type { Product } from "../data/products";
 type Props = {
   product: Product;
   onBuy: (product: Product) => void;
+  isBuying: boolean;
+  walletConnected: boolean;
 };
 
-export default function ProductCard({ product, onBuy }: Props) {
+export default function ProductCard({
+  product,
+  onBuy,
+  isBuying,
+  walletConnected,
+}: Props) {
   return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        padding: "20px",
-        borderRadius: "10px",
-        width: "250px",
-      }}
-    >
-      <img src={product.image} width="100%" />
-      <h3>{product.name}</h3>
-      <p>Prezzo: {product.price} ETH</p>
+    <article className="product-card">
+      <div className="product-card__image-wrapper">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="product-card__image"
+        />
+      </div>
 
-      <button onClick={() => onBuy(product)}>Acquistare</button>
-    </div>
+      <div className="product-card__content">
+        <div className="product-card__top">
+          <span className="product-card__tag">Travel Experience</span>
+          <h4>{product.name}</h4>
+        </div>
+
+        <p className="product-card__description">
+          {product.description}
+        </p>
+
+        <div className="product-card__footer">
+          <div>
+            <span className="product-card__price-label">Price</span>
+            <p className="product-card__price">
+              {product.price} ETH
+            </p>
+          </div>
+
+          <button
+            className="btn btn--primary"
+            onClick={() => onBuy(product)}
+            disabled={isBuying}
+          >
+            {isBuying
+              ? "Processing..."
+              : walletConnected
+              ? "Buy Now"
+              : "Connect & Buy"}
+          </button>
+
+          
+          {!walletConnected && (
+            <p
+              style={{
+                marginTop: "8px",
+                fontSize: "0.85rem",
+                color: "#f87171",
+              }}
+            >
+              Please connect your wallet first
+            </p>
+          )}
+        </div>
+      </div>
+    </article>
   );
 }

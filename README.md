@@ -4,17 +4,20 @@ Questo progetto è una semplice applicazione web **Web3** realizzata con **React
 
 L'obiettivo è creare una piccola applicazione di **prenotazione di viaggi** che permette all'utente di acquistare pacchetti utilizzando **Ethereum tramite MetaMask**.
 
-Quando l'utente clicca su **Acquistare**, viene inviata una **transazione sulla blockchain Ethereum (Sepolia Testnet)** e viene mostrata la conferma del pagamento con il link alla transazione su **Etherscan**.
+Quando l'utente clicca su **"buy now "**, viene inviata una **transazione sulla blockchain Ethereum (Sepolia Testnet)** e viene mostrata la conferma del pagamento con il link alla transazione su **Etherscan**.
 
 
 ## Funzionalità principali
 
 - Connessione al wallet **MetaMask**
+- disconnessione del wallet
 - Visualizzazione dell'indirizzo del wallet collegato
 - Visualizzazione del saldo **ETH**
 - Lista di pacchetti di viaggio
 - Acquisto dei pacchetti tramite **transazione Ethereum**
 - Messaggio di **acquisto completato**
+- Gestioni errore di pagamento (Payment error)
+- Controllo automatico connessione wallet
 - Link alla transazione su **Etherscan**
 
 ## Tecnologie utilizzate
